@@ -12,8 +12,8 @@
     <mat-form-field appearance="outline"  class="inputbox">
         <mat-label>Password</mat-label>
         <mat-error>Enter a password</mat-error>
-        <input matInput formControlName="password" required>
-        <button mat-icon-button matSuffix>
+        <input [type]="hidden?'text':'password'" matInput formControlName="password" required>
+        <button mat-icon-button matSuffix (click)="hide()">
             <img src="..\assets/visibility.svg" alt="">
         </button>
     </mat-form-field>

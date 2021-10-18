@@ -21,4 +21,13 @@ export class UserServiceService {
 
   }
 
+  loginservice(payload:any){
+    let header=new HttpHeaders(
+      {
+      "Content-Type":"application/json"
+      }
+    )
+    return this.httpservice.postService(this.URL +"/bookstore_user/login",payload,false,header)
+  }
+
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserServiceService } from 'src/app/services/userService/user-service.service';
 
 
@@ -10,8 +11,9 @@ import { UserServiceService } from 'src/app/services/userService/user-service.se
 })
 export class SignupComponent implements OnInit {
   formdata: any;
+  hidden=false;
 
-  constructor(private userservice:UserServiceService) { }
+  constructor(private userservice:UserServiceService,private snackbar:MatSnackBar) { }
 
   ngOnInit(): void {
     this.formdata=new FormGroup({
@@ -34,14 +36,23 @@ export class SignupComponent implements OnInit {
       console.log(payload);
 
       this.userservice.registerservice(payload).subscribe(
-        (response) => console.log(response),
-        (error) => console.log(error)
-
+        (response) => {
+          console.log(response),
+          this.snackbar.open("Registration successfull", " ", {
+            duration: 1500,
+          });
+        },
+        (error) => {
+          console.log(error)
+          this.snackbar.open(error.error.message, "close", {
+            duration: 1500,
+          });
+        }
 
       )
-    }
-
-
-    
+    }  
+  }
+  hide() {
+    this.hidden = !this.hidden;
   }
 }

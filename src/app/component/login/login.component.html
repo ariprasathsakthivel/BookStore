@@ -1,4 +1,4 @@
-<form [formGroup]="formdata" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px" class="container">
+<form [formGroup]="formdata" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px" class="container" (ngSubmit)="onSubmit()">
 
     <mat-form-field appearance="outline" class="email">
         <mat-label>Email Id</mat-label>
@@ -8,13 +8,13 @@
     <mat-form-field appearance="outline" class="email">
         <mat-label>Password</mat-label>
         <mat-error>Enter password</mat-error>
-        <input matInput formControlName="password" required>
+        <input [type]="hidden?'text':'password'" matInput formControlName="password" required>
         <mat-hint align="end" class="forgotpassword"><button mat-button >Forgot Password?</button></mat-hint>
-        <button mat-icon-button matSuffix type="submit">
+        <button mat-icon-button matSuffix type="submit" (click)="hide()">
             <img src="..\assets/visibility.svg" alt="">
         </button>
     </mat-form-field>
-    <button mat-flat-button color="primary" class="loginbutton">Login</button>
+    <button mat-flat-button type="submit" color="primary" class="loginbutton">Login</button>
 
     <div fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="7px">
         <button mat-flat-button color="primary" class="facebook">Facebook</button>

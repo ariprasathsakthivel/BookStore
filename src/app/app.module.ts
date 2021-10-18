@@ -14,6 +14,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 
 
@@ -50,7 +52,8 @@ import { ForgotPasswordComponent } from './component/forgot-password/forgot-pass
     ReactiveFormsModule,
     FormsModule,
     MatToolbarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   
   providers: [],

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { UserServiceService } from 'src/app/services/userService/user-service.service';
 
 @Component({
   selector: 'app-login',
@@ -9,8 +12,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   formdata: any;
+  hidden=false;
+  token:any;
 
-  constructor() { }
+  constructor(private userservice:UserServiceService,private snackbar:MatSnackBar,private route:Router) { }
 
   ngOnInit(): void {
     this.formdata = new FormGroup({
@@ -19,4 +24,34 @@ export class LoginComponent implements OnInit {
     });
   }
 
+
+  onSubmit(){
+    if (!this.formdata.invalid){
+      let payload={
+        "email": this.formdata.value.username,
+        "password": this.formdata.value.password
+      }
+      this.userservice.loginservice(payload).subscribe(
+        (response:any) => {
+          console.log(response),
+            localStorage.setItem("token", response.result.accessToken),
+            this.snackbar.open(response.message, "close", {
+            duration: 1500,
+          });
+          this.route.navigateByUrl("/dashboard");
+        },
+        (error) => {
+          console.log(error)
+          this.snackbar.open(error.error.message, "close", {
+            duration: 1500,
+          });
+        }        
+        
+      )
+    }
+  }
+
+  hide(){
+    this.hidden=!this.hidden;
+  }
 }
