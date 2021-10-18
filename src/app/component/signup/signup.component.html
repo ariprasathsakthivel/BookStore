@@ -1,0 +1,26 @@
+<form [formGroup]="formdata" (ngSubmit)="OnSubmit()" fxLayout="column" fxLayoutAlign="space-around center">
+    <mat-form-field appearance="outline" class="inputbox" style="margin-top: 15px;">
+        <mat-label>Full Name</mat-label>
+        <mat-error>Enter Full Name</mat-error>
+        <input matInput formControlName="fullname" required >
+    </mat-form-field>
+    <mat-form-field appearance="outline"  class="inputbox">
+        <mat-label>Email Id</mat-label>
+        <mat-error>Enter an E-mail address</mat-error>
+        <input matInput formControlName="username" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline"  class="inputbox">
+        <mat-label>Password</mat-label>
+        <mat-error>Enter a password</mat-error>
+        <input matInput formControlName="password" required>
+        <button mat-icon-button matSuffix>
+            <img src="..\assets/visibility.svg" alt="">
+        </button>
+    </mat-form-field>
+    <mat-form-field appearance="outline"  class="inputbox">
+        <mat-label>Mobile Number</mat-label>
+        <mat-error>Enter a Mobile Number</mat-error>
+        <input matInput formControlName="mobilenumber" required>
+    </mat-form-field>
+    <button type="submit" mat-flat-button color="primary" class="signupbutton">Signup</button>
+</form>

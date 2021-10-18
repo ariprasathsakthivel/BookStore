@@ -1,0 +1,18 @@
+<div fxFlex class="container"  fxLayout="column" fxLayoutAlign="center stretch" >
+    <div fxLayout="row" fxLayoutAlign="center center" >
+        <mat-card class="imagecard" fxLayoutAlign="start center" fxHide.xs>
+            <img class="shoppingcart" src="../assets\shoppingcart.png"  fxFlexOffset="25px">
+        </mat-card>
+        <mat-card class="formcard" [ngStyle.gt-xs]="{'margin-left.px':-300}">
+            <mat-tab-group mat-align-tabs="center">
+                <mat-tab label="LOGIN">
+                    <app-login></app-login>
+                </mat-tab>
+                <mat-tab label="SIGNUP">
+                    <app-signup></app-signup>
+                </mat-tab>
+            </mat-tab-group>
+            
+        </mat-card>
+    </div>
+</div>
