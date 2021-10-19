@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
+import { BookserviceService } from 'src/app/services/BookService/bookservice.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,9 +10,15 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bookservice:BookserviceService, private routes:Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  loginSignup(){
+    this.routes.navigateByUrl("/loginsignup");
   }
+
+
+
 
 }

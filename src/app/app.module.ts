@@ -15,6 +15,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 
@@ -25,6 +27,7 @@ import { LoginSignupComponent } from './component/login-signup/login-signup.comp
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
+import { DisplaybookComponent } from './component/displaybook/displaybook.component';
 
 
 
@@ -35,7 +38,8 @@ import { ForgotPasswordComponent } from './component/forgot-password/forgot-pass
     SignupComponent,
     LoginSignupComponent,
     DashboardComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    DisplaybookComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,9 @@ import { ForgotPasswordComponent } from './component/forgot-password/forgot-pass
     FormsModule,
     MatToolbarModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSelectModule,
+    MatMenuModule
   ],
   
   providers: [],
