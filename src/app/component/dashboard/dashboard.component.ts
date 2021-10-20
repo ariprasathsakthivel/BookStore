@@ -12,10 +12,19 @@ export class DashboardComponent implements OnInit {
 
   constructor(private bookservice:BookserviceService, private routes:Router) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+  }
+
+  home(){
+    this.routes.navigateByUrl("/home/books");
+  }
 
   loginSignup(){
     this.routes.navigateByUrl("/loginsignup");
+  }
+
+  wishlist(){
+    this.routes.navigateByUrl("/home/wishlist");
   }
 
 

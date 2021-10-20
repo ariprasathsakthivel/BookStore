@@ -28,6 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { DisplaybookComponent } from './component/displaybook/displaybook.component';
+import { WishlistComponent } from './component/wishlist/wishlist.component';
+import { DisplayselectedbookComponent } from './component/displayselectedbook/displayselectedbook.component';
 
 
 
@@ -39,7 +41,9 @@ import { DisplaybookComponent } from './component/displaybook/displaybook.compon
     LoginSignupComponent,
     DashboardComponent,
     ForgotPasswordComponent,
-    DisplaybookComponent
+    DisplaybookComponent,
+    WishlistComponent,
+    DisplayselectedbookComponent
   ],
   imports: [
     BrowserModule,

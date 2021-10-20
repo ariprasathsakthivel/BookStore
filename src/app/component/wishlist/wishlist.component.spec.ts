@@ -1,24 +1,24 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DisplaybookComponent } from './displaybook.component';
+import { WishlistComponent } from './wishlist.component';
 import { HttpClientModule } from '@angular/common/http';
 
-describe('DisplaybookComponent', () => {
-  let component: DisplaybookComponent;
-  let fixture: ComponentFixture<DisplaybookComponent>;
+
+
+describe('WishlistComponent', () => {
+  let component: WishlistComponent;
+  let fixture: ComponentFixture<WishlistComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DisplaybookComponent],
-      imports: [
-        HttpClientModule
-      ]
+      declarations: [ WishlistComponent ],
+      imports:[ HttpClientModule ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DisplaybookComponent);
+    fixture = TestBed.createComponent(WishlistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

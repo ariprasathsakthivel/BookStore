@@ -26,4 +26,20 @@ export class BookserviceService {
     return this.http.getService(this.baseURL +"/bookstore_user/get/book",true,header)
   }
 
+
+  getwishlist(){
+    this.token = localStorage.getItem('token')
+
+    let header=new HttpHeaders(
+      {
+        'x-access-token': this.token,
+        'Content-Type': 'application/json'
+      }
+    )
+    
+    return this.http.getService(this.baseURL +"/bookstore_user/get_wishlist_items",true,header)
+  }
+
+
+
 }

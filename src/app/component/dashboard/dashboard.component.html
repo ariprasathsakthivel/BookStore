@@ -1,15 +1,14 @@
 <div fxFlex>    
     <mat-toolbar class="toolbar" fxLayout="row" fxLayoutAlign="start center" >
         <div  fxLayoutAlign="space-evenly" fxFlexOffset="100px" fxFlexOffset.lt-md="0px">
-            <mat-icon class="education">
+            <mat-icon (click)="home()" class="education">
                 <img src="../assets\education.svg">
             </mat-icon>
-            <h1 class="bookstore">bookstore</h1>
+            <h1 (click)="home()" class="bookstore">bookstore</h1>
             <form class="search" fxLayout="row" fxLayoutAlign="none center" fxHide.lt-md>
                 <img class="searchicon" src="../assets\Search.svg">
                 <input placeholder="Search..." class="searchinput" >
             </form>
-
         </div>
         <div fxLayoutAlign="end start" fxFlex class="profile-cart" [ngStyle.lt-md]="{'padding-right.px': 0}">
             <button mat-icon-button style="padding-right: 15px;" fxHide.gt-sm>
@@ -30,7 +29,7 @@
                         <img class="shoppingbag" src="../assets\shoppingbag.svg">
                         <p class="orders">My Orders</p>
                     </button>
-                    <button mat-icon-button fxLayout="row">
+                    <button mat-icon-button fxLayout="row" (click)="wishlist()">
                         <img class="shoppingbag" src="../assets\wishlist.svg">
                         <p class="orders">Wishlist</p>
                     </button>
@@ -42,7 +41,7 @@
             </button>
         </div>
     </mat-toolbar>
-    <router-outlet ></router-outlet>
+    <router-outlet></router-outlet>
     <div class="footer" >
         <p class="Copyrightcontent"  fxFlexOffset="100px" fxFlexOffset.xs="0px" >Copyright © 2020, Bookstore Private Limited. All Rights Reserved</p>
     </div>

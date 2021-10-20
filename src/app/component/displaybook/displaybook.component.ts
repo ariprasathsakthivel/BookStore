@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { BookserviceService } from 'src/app/services/BookService/bookservice.service';
+import { DatashareService } from 'src/app/services/Datashare/datashare.service';
 
 @Component({
   selector: 'app-displaybook',
@@ -15,7 +17,8 @@ export class DisplaybookComponent implements OnInit {
 
 
 
-  constructor(private bookservice:BookserviceService) { }
+
+  constructor(private bookservice: BookserviceService, private route: Router, private dataservice:DatashareService) { }
 
   ngOnInit(): void {
     this.displaybooks();
@@ -36,4 +39,11 @@ export class DisplaybookComponent implements OnInit {
 
     )
   }
+
+  displayselected(book:any){
+    this.route.navigateByUrl("/home/book");
+    this.dataservice.changeMessage(book);
+  }
+
+
 }

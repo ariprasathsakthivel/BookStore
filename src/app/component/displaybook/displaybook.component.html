@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="cardcontainer"  fxLayout="row wrap">
-        <mat-card class="card" *ngFor="let book of books">
+        <mat-card class="card" *ngFor="let book of books" (click)="displayselected(book)">
             <mat-card-header class="image"  fxLayout="column" fxLayoutAlign="center center" >
                 <img class="bookimage" mat-card-image src="../assets\Book1.png">
             </mat-card-header>  
@@ -32,8 +32,10 @@
                     <p class="reviewno">(20)</p>
                 </div>
                 <p class="price" *ngIf="book.discountPrice==0">Rs. {{book.price}}</p>
-                <p class="price" *ngIf="book.discountPrice>0">Rs. {{book.price-book.discountPrice}}</p>
-                <p class="pricestrike" *ngIf="book.discountPrice>0"><del>Rs. {{book.price}}</del></p>
+                <div fxLayout="row" fxLayoutGap="10px">
+                    <p class="price" *ngIf="book.discountPrice>0">Rs. {{book.price-book.discountPrice}}</p>
+                    <p class="pricestrike" *ngIf="book.discountPrice>0"><del>Rs. {{book.price}}</del></p>
+                </div>
             </mat-card-content>
             <mat-card-actions></mat-card-actions>
 

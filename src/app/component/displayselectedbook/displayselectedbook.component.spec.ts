@@ -1,24 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DisplaybookComponent } from './displaybook.component';
+import { DisplayselectedbookComponent } from './displayselectedbook.component';
 import { HttpClientModule } from '@angular/common/http';
 
-describe('DisplaybookComponent', () => {
-  let component: DisplaybookComponent;
-  let fixture: ComponentFixture<DisplaybookComponent>;
+describe('DisplayselectedbookComponent', () => {
+  let component: DisplayselectedbookComponent;
+  let fixture: ComponentFixture<DisplayselectedbookComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DisplaybookComponent],
-      imports: [
-        HttpClientModule
-      ]
+      declarations: [DisplayselectedbookComponent],
+      imports: [HttpClientModule]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DisplaybookComponent);
+    fixture = TestBed.createComponent(DisplayselectedbookComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
