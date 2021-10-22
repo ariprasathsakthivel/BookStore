@@ -1,0 +1,128 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+    <div class="container" fxLayout="column" fxLayoutAlign="start start">
+        <div fxLayout="row">
+            <p class="head0">Home /</p>
+            <p class="head1">Book(01)</p>
+        </div>
+
+        <mat-accordion multi>
+            <mat-expansion-panel hideToggle class="panel" [expanded]="true">
+                <mat-expansion-panel-header>
+                <mat-panel-title class="paneltitle">
+                    My cart ({{count}})
+                </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="50px" fxLayout.xs="column" *ngFor="let data of cartitems" class="bookdata">
+                    <div fxLayout="column" fxLayoutGap="15px">
+                        <img class="book" src="../assets\Book1.png">
+                    </div>
+                    <div>
+                        <p class="bookname">{{data.product_id.bookName}}</p>
+                        <p class="author">by {{data.product_id.author}}</p>
+                        <p class="actualprice" *ngIf="data.product_id.discountPrice==0">Rs. {{data.product_id.price}}</p>
+                        <div fxLayout="row" fxLayoutGap="10px">
+                            <p class="actualprice" *ngIf="data.product_id.discountPrice>0">Rs. {{data.product_id.price-data.product_id.discountPrice}}</p>
+                            <p class="discountPrice" *ngIf="data.product_id.discountPrice>0"><del>Rs. {{data.product_id.price}}</del></p>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-between start">
+                            <div fxLayout="row">
+                                <button mat-icon-button (click)="countdecrease(data)"><img class="plusminus" src="..\assets/minus.svg"></button>
+                                <p class="count">{{data.quantityToBuy}}</p>
+                                <button mat-icon-button (click)="countincrease(data)"><img class="plusminus" src="..\assets/plus.svg"></button>
+                            </div>
+                            <button mat-button (click)="removecartitem(data)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="end end">
+                    <button mat-flat-button color="primary" class="placeorder" *ngIf="step1button" (click)="setStep(1)">Place order</button>
+                </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel hideToggle class="panel" [expanded]="step1">
+                <mat-expansion-panel-header>
+                <mat-panel-title class="paneltitle">
+                    Customer Details
+                </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-form-field appearance="outline">
+                    <mat-label>Full Name</mat-label>
+                    <mat-error>Enter Full Name</mat-error>
+                    <input matInput required [value]="fullname">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Mobile Number</mat-label>
+                    <mat-error>Enter a Mobile Number</mat-error>
+                    <input matInput required [value]="mobilenumber">
+                </mat-form-field>
+
+                <mat-radio-group aria-label="Select an option" *ngFor="let item of address">
+                    <mat-radio-button class="radiobutton" value="1">
+
+                        <div>
+                            <div fxLayout="row" >
+                                <p class="addresstype">{{item.addressType}}</p>
+                                <button class="editbutton" mat-button *ngIf="disabled" (click)="enable()">Edit</button>
+                            </div>
+                            <mat-form-field appearance="outline" style="margin-top: 15px;">
+                                <mat-label>Address</mat-label>
+                                <mat-error>Enter Address</mat-error>
+                                <input  matInput required [value]="item.fullAddress" [disabled]="disabled">
+                            </mat-form-field>
+                            <div fxLayout="row" fxLayoutGap="10px">
+                                <mat-form-field appearance="outline" style="margin-top: 15px;">
+                                    <mat-label>city/town</mat-label>
+                                    <mat-error>Enter a city/town</mat-error>
+                                    <input matInput required [value]="item.city" [disabled]="disabled">
+                                </mat-form-field>
+                                
+                                <mat-form-field appearance="outline">
+                                    <mat-label>State</mat-label>
+                                    <mat-error>Enter a state</mat-error>
+                                    <input matInput required [value]="item.state" [disabled]="disabled">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </mat-radio-button>
+                </mat-radio-group>
+
+
+
+                <div fxLayout="row" fxLayoutAlign="end end">
+                    <button mat-flat-button color="primary" class="placeorder" (click)="setStep(2)" *ngIf="step2button">Continue</button>
+                </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel hideToggle class="panel" [expanded]="step2">
+                <mat-expansion-panel-header>
+                <mat-panel-title class="paneltitle">
+                    Order summery
+                </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="50px" fxLayout.lt-md="column"
+                    *ngFor="let data of cartitems" class="bookdata">
+                    <div fxLayout="column" fxLayoutGap="15px">
+                        <img class="book" src="../assets\Book1.png">
+                    </div>
+                    <div>
+                        <p class="bookname">{{data.product_id.bookName}}</p>
+                        <p class="author">by {{data.product_id.author}}</p>
+                        <p class="actualprice" *ngIf="data.product_id.discountPrice==0">Rs. {{data.product_id.price}}</p>
+                        <div fxLayout="row" fxLayoutGap="10px">
+                            <p class="actualprice" *ngIf="data.product_id.discountPrice>0">Rs.
+                                {{data.product_id.price-data.product_id.discountPrice}}</p>
+                            <p class="discountPrice" *ngIf="data.product_id.discountPrice>0"><del>Rs. {{data.product_id.price}}</del>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="end end">
+                    <button mat-flat-button color="primary" class="placeorder">Checkout</button>
+                </div>
+            </mat-expansion-panel>
+
+        </mat-accordion>
+
+    </div>
+</div>

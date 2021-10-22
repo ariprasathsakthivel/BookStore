@@ -27,6 +27,10 @@ export class DashboardComponent implements OnInit {
     this.routes.navigateByUrl("/home/wishlist");
   }
 
+  mycart(){
+    this.routes.navigateByUrl("/home/mycart")
+  }
+
 
 
 

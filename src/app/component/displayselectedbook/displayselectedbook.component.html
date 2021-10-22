@@ -7,7 +7,12 @@
         <div fxLayout="column" fxLayoutGap="15px">
             <img class="book" src="../assets\Book1.png">
             <div fxLayout="row" fxLayoutAlign="space-between start">
-                <button mat-flat-button type="submit" color="primary" class="addtobagbutton">Add to bag</button>
+                <button (click)="addtobagbuttonhide()" *ngIf="addtobaghide"  mat-flat-button type="submit" color="primary" class="addtobagbutton">Add to bag</button>
+                <div *ngIf="counthide" fxLayout="row">
+                    <button mat-icon-button (click)="countdecrease()"><img class="plusminus" src="..\assets/minus.svg" alt=""></button>
+                    <p class="count">{{ordercount}}</p>
+                    <button mat-icon-button (click)="countincrease()"><img class="plusminus" src="..\assets/plus.svg" alt=""></button>
+                </div>
                 <button mat-flat-button type="submit" color="primary" class="wishlistbutton">Wishlist</button>
             </div>
         </div>

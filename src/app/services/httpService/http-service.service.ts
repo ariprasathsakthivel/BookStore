@@ -15,4 +15,12 @@ export class HttpServiceService {
   getService(url: string, token: boolean = false, header: any = null) {
     return this.http.get(url, token && header);
   }
+
+  putService(url: string, payload: any, token: boolean = false, header: any = null) {
+    return this.http.put(url, payload, token && header);
+  }
+
+  deleteService(url: string, payload: any, token: boolean = false, header: any = null) {
+    return this.http.delete(url,token && header);
+  }
 }
