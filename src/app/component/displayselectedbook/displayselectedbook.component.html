@@ -13,7 +13,7 @@
                     <p class="count">{{ordercount}}</p>
                     <button mat-icon-button (click)="countincrease()"><img class="plusminus" src="..\assets/plus.svg" alt=""></button>
                 </div>
-                <button mat-flat-button type="submit" color="primary" class="wishlistbutton">Wishlist</button>
+                <button (click)="addtowishlist()" mat-flat-button type="submit" color="primary" class="wishlistbutton">Wishlist</button>
             </div>
         </div>
         <div>

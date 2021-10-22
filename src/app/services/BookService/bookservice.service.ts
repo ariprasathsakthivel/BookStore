@@ -92,6 +92,45 @@ export class BookserviceService {
     }
     return this.http.deleteService(this.baseURL + "/bookstore_user/remove_cart_item/" + productID, null, true, header);
   }
+
+  orderplace(payload:any){
+    let header = {
+      headers: new HttpHeaders(
+        {
+          'x-access-token': this.token,
+          'Content-Type': 'application/json'
+        }
+      )
+    }
+    return this.http.postService(this.baseURL +"/bookstore_user/add/order", payload, true, header);
+  }
+
+
+
+  addwishlist(productID: any){
+    let header = {
+      headers: new HttpHeaders(
+        {
+          'x-access-token': this.token,
+          'Content-Type': 'application/json'
+        }
+      )
+    }
+    return this.http.postService(this.baseURL + "/bookstore_user/add_wish_list/" + productID, null, true, header);
+  }
+
+  removewishlistitem(productID: any) {
+    let header = {
+      headers: new HttpHeaders(
+        {
+          'x-access-token': this.token,
+          'Content-Type': 'application/json'
+        }
+      )
+    }
+    return this.http.deleteService(this.baseURL + "/bookstore_user/remove_wishlist_item/" + productID, null, true, header);
+  }
+
 }
 
 

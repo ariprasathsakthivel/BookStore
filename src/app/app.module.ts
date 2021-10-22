@@ -33,6 +33,7 @@ import { DisplaybookComponent } from './component/displaybook/displaybook.compon
 import { WishlistComponent } from './component/wishlist/wishlist.component';
 import { DisplayselectedbookComponent } from './component/displayselectedbook/displayselectedbook.component';
 import { MycartComponent } from './component/mycart/mycart.component';
+import { OrderplacedComponent } from './component/orderplaced/orderplaced.component';
 
 
 
@@ -47,7 +48,8 @@ import { MycartComponent } from './component/mycart/mycart.component';
     DisplaybookComponent,
     WishlistComponent,
     DisplayselectedbookComponent,
-    MycartComponent
+    MycartComponent,
+    OrderplacedComponent
   ],
   imports: [
     BrowserModule,

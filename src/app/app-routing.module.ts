@@ -7,6 +7,7 @@ import { DisplayselectedbookComponent } from './component/displayselectedbook/di
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { LoginSignupComponent } from './component/login-signup/login-signup.component';
 import { MycartComponent } from './component/mycart/mycart.component';
+import { OrderplacedComponent } from './component/orderplaced/orderplaced.component';
 import { WishlistComponent } from './component/wishlist/wishlist.component';
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
     { path:"books",component: DisplaybookComponent},
     { path:"wishlist",component:WishlistComponent },
     { path:"book",component:DisplayselectedbookComponent },
-    { path:"mycart",component:MycartComponent }
+    { path:"mycart",component:MycartComponent },
+    { path:"orderplaced",component:OrderplacedComponent }
   ]
   },
   { path: '', redirectTo: 'loginsignup', pathMatch: 'full' }

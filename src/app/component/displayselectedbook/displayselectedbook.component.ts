@@ -74,5 +74,13 @@ export class DisplayselectedbookComponent implements OnInit {
     )
   }
 
+  addtowishlist(){
+    this.bookservice.addwishlist(this.data._id).subscribe(
+      (response)=>console.log(response),
+      (error)=>console.log(error)
+      
+    )
+  }
+
   
 }

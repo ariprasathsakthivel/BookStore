@@ -11,6 +11,7 @@ export class WishlistComponent implements OnInit {
   constructor(private bookservice:BookserviceService) { }
 
   wishlistitems:any;
+  whislistitemscount:any;
 
   ngOnInit(): void {
     this.wishlist()
@@ -18,9 +19,15 @@ export class WishlistComponent implements OnInit {
 
   wishlist(){
     this.bookservice.getwishlist().subscribe(
-      (response:any)=>{console.log(response)},
+      (response: any) => { console.log(response); this.wishlistitems = response.result; this.whislistitemscount = response.result.length;console.log(this.wishlistitems)},
       (error)=>console.log(error)
-      
+    )
+  }
+
+  deletewishlistitem(data:any){
+    this.bookservice.removewishlistitem(data.product_id._id).subscribe(
+      (response)=>{console.log(response);this.wishlist()},
+      (error)=>console.log(error)
     )
   }
 

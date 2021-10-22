@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BookserviceService } from 'src/app/services/BookService/bookservice.service';
 
 @Component({
@@ -19,7 +20,9 @@ export class MycartComponent implements OnInit {
   address:any;
   disabled:boolean=true;
 
-  constructor( private bookservice:BookserviceService) { }
+  orderlist:any=[];
+
+  constructor( private bookservice:BookserviceService,private routes:Router) { }
 
   ngOnInit(): void {
     this.cartitemslist()
@@ -84,7 +87,7 @@ export class MycartComponent implements OnInit {
     }
     console.log("updated",this.ordercount);
     console.log(data._id);
-    this.bookservice.updateitemcount(data._id, payload).subscribe(
+    this.bookservice.updateitemcount(data.product_id._id, payload).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
@@ -103,6 +106,32 @@ export class MycartComponent implements OnInit {
 
   enable(){
     this.disabled=false;
+  }
+
+
+  checkout(){
+
+    this.cartitems.forEach((element:any) => {
+      this.orderlist.push(
+        {
+          "product_id": element.product_id._id,
+          "product_name": element.product_id.bookName,
+          "product_quantity": element.quantityToBuy,
+          "product_price": element.product_id.price - element.product_id.discountPrice
+        }
+      );
+    });
+    console.log(this.orderlist);
+    
+
+    let payload = {
+      "orders": this.orderlist
+    }
+    this.bookservice.orderplace(payload).subscribe(
+      (response) => { console.log(response); this.routes.navigateByUrl("/home/orderplaced")},
+      (error)=>console.log(error)
+            
+    )
   }
 
 }
