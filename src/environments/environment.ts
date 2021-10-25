@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BaseURL:"https://new-bookstore-backend.herokuapp.com"
+  BaseURL:"https://bookstore.incubation.bridgelabz.com"
 };
 
 /*

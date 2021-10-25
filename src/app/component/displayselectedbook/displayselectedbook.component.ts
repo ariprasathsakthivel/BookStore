@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { BookserviceService } from 'src/app/services/BookService/bookservice.service';
 import { DatashareService } from 'src/app/services/Datashare/datashare.service';
 
@@ -9,34 +10,35 @@ import { DatashareService } from 'src/app/services/Datashare/datashare.service';
 })
 export class DisplayselectedbookComponent implements OnInit {
 
+  bookID:any;
+  books:any;
   data:any;
   ordercount=0;
   addtobaghide:boolean=true;
   counthide:boolean=false;
 
-  constructor(private dataservice: DatashareService,private bookservice:BookserviceService) { }
+  constructor(private bookservice:BookserviceService, private snackbar:MatSnackBar) { }
 
   ngOnInit(): void {
-    this.dataservice.currentMessage.subscribe((data)=>{console.log(data);
-    //   this.data = {
-    //     admin_user_id: "60a7dfe56ad6bc00157945f1",
-    //     author: "Steve Jobs",
-    //     bookImage: null,
-    //     bookName: "Apple",
-    //     createdAt: "2021-05-22T06:54:44.976Z",
-    //     description: "Story about apple products",
-    //     discountPrice: 100,
-    //     price: 2000,
-    //     quantity: 10,
-    //     updatedAt: "2021-05-22T06:54:44.976Z",
-    //     __v: 0,
-    //     _id: "60a8aab496edee0015d919dc"};
-    // }
-    this.data=data
-    }
-    
-  )
-    
+ 
+    this.bookID = localStorage.getItem("bookID");
+    console.log(this.bookID);
+    this.bookdetail();
+  }
+
+
+  bookdetail(){
+    this.bookservice.getallbooks().subscribe(
+      (response: any) => {
+        console.log(response.result, response.result.length);
+        response.result.forEach((element: any) => {
+          if (element._id == this.bookID) {
+            this.data = element;
+          }
+        });
+      },
+      (error) => console.log(error)
+    )
   }
 
   addtobagbuttonhide(){
@@ -46,6 +48,7 @@ export class DisplayselectedbookComponent implements OnInit {
       (response)=>console.log(response),
       (error)=>console.log(error)
     )
+    
   }
 
   countincrease(){
@@ -76,7 +79,10 @@ export class DisplayselectedbookComponent implements OnInit {
 
   addtowishlist(){
     this.bookservice.addwishlist(this.data._id).subscribe(
-      (response)=>console.log(response),
+      (response:any)=>{console.log(response);
+        this.snackbar.open(response.message, "close", {
+          duration: 1800,
+        })},
       (error)=>console.log(error)
       
     )

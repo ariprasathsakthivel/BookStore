@@ -1,5 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { BookserviceService } from 'src/app/services/BookService/bookservice.service';
 import { DatashareService } from 'src/app/services/Datashare/datashare.service';
 
@@ -8,17 +9,20 @@ import { DatashareService } from 'src/app/services/Datashare/datashare.service';
   templateUrl: './displaybook.component.html',
   styleUrls: ['./displaybook.component.scss']
 })
-export class DisplaybookComponent implements OnInit {
+export class DisplaybookComponent implements OnInit,OnDestroy {
 
   books:any;
   bookscount:any;
   selectedValue:any;
   box:any;
+  
+
+  abc: Subscription = new Subscription;
 
 
 
 
-  constructor(private bookservice: BookserviceService, private route: Router, private dataservice:DatashareService) { }
+  constructor(private bookservice: BookserviceService, private route: Router) { }
 
   ngOnInit(): void {
     this.displaybooks();
@@ -31,9 +35,10 @@ export class DisplaybookComponent implements OnInit {
 
 
   displaybooks() {
-    this.bookservice.getallbooks().subscribe(
+    this.abc=this.bookservice.getallbooks().subscribe(
       (response: any) => {console.log(response.result,response.result.length);
-      this.books=response.result; this.bookscount=response.result.length},
+                          this.books=response.result;
+                          this.bookscount=response.result.length},
       (error) => console.log(error)
 
 
@@ -42,7 +47,12 @@ export class DisplaybookComponent implements OnInit {
 
   displayselected(book:any){
     this.route.navigateByUrl("/home/book");
-    this.dataservice.changeMessage(book);
+    localStorage.setItem("bookID", book._id);
+  }
+
+  ngOnDestroy(){
+    this.abc.unsubscribe();
+
   }
 
 

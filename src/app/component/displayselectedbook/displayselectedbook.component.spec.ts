@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DisplayselectedbookComponent } from './displayselectedbook.component';
 import { HttpClientModule } from '@angular/common/http';
+import {MatSnackBarModule } from '@angular/material/snack-bar';
 
 describe('DisplayselectedbookComponent', () => {
   let component: DisplayselectedbookComponent;
@@ -10,7 +11,10 @@ describe('DisplayselectedbookComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DisplayselectedbookComponent],
-      imports: [HttpClientModule]
+      imports: [
+        HttpClientModule,
+        MatSnackBarModule
+      ]
     })
     .compileComponents();
   });

@@ -22,5 +22,13 @@
         <mat-error>Enter a Mobile Number</mat-error>
         <input matInput formControlName="mobilenumber" required>
     </mat-form-field>
-    <button type="submit" mat-flat-button color="primary" class="signupbutton">Signup</button>
+
+    <mat-form-field appearance="outline" class="inputbox">
+        <mat-label>User type</mat-label>
+        <mat-select formControlName="selectedvalue"  required>
+            <mat-option value="User">User</mat-option>
+            <mat-option value="Admin">Admin</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button type="submit" mat-flat-button color="primary" class="signupbutton">{{formdata.value.selectedvalue}} Signup</button>
 </form>

@@ -41,22 +41,23 @@
 
             <mat-expansion-panel hideToggle class="panel" [expanded]="step1">
                 <mat-expansion-panel-header>
-                <mat-panel-title class="paneltitle">
-                    Customer Details
-                </mat-panel-title>
+                    <mat-panel-title class="paneltitle">
+                        Customer Details
+                    </mat-panel-title>
                 </mat-expansion-panel-header>
-                <mat-form-field appearance="outline">
-                    <mat-label>Full Name</mat-label>
-                    <mat-error>Enter Full Name</mat-error>
-                    <input matInput required [value]="fullname">
-                </mat-form-field>
+                <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="15px">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Full Name</mat-label>
+                        <mat-error>Enter Full Name</mat-error>
+                        <input matInput required [value]="fullname">
+                    </mat-form-field>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Mobile Number</mat-label>
-                    <mat-error>Enter a Mobile Number</mat-error>
-                    <input matInput required [value]="mobilenumber">
-                </mat-form-field>
-
+                    <mat-form-field appearance="outline">
+                        <mat-label>Mobile Number</mat-label>
+                        <mat-error>Enter a Mobile Number</mat-error>
+                        <input matInput required [value]="mobilenumber">
+                    </mat-form-field>
+                </div>
                 <mat-radio-group aria-label="Select an option" *ngFor="let item of address">
                     <mat-radio-button class="radiobutton" value="1">
 

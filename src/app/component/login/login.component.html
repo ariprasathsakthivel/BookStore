@@ -10,11 +10,20 @@
         <mat-error>Enter password</mat-error>
         <input [type]="hidden?'text':'password'" matInput formControlName="password" required>
         <mat-hint align="end" class="forgotpassword"><button mat-button >Forgot Password?</button></mat-hint>
-        <button mat-icon-button matSuffix type="submit" (click)="hide()">
-            <img src="..\assets/visibility.svg" alt="">
+        <button mat-icon-button matSuffix >
+            <img (click)="hide()" src="..\assets/visibility.svg" > 
         </button>
     </mat-form-field>
-    <button mat-flat-button type="submit" color="primary" class="loginbutton">Login</button>
+
+    <mat-form-field appearance="outline" class="email">
+        <mat-label>User type</mat-label>
+        <mat-select formControlName="selectedvalue" required>
+            <mat-option value="User">User</mat-option>
+            <mat-option value="Admin">Admin</mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <button mat-flat-button type="submit" color="primary" class="loginbutton">{{formdata.value.selectedvalue}} Login</button>
 
     <div fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="7px">
         <button mat-flat-button color="primary" class="facebook">Facebook</button>

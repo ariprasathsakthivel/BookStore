@@ -18,7 +18,6 @@ export class UserServiceService {
       }
     )
     return this.httpservice.postService(this.URL + "/bookstore_user/registration", payload, false, header)
-
   }
 
   loginservice(payload:any){
