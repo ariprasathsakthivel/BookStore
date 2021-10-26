@@ -40,14 +40,14 @@
             <p class="feedbackhead">Customer Feedback</p>
             <div class="reviewbox" fxLayout="column">
                 <p class="ratinghead">Overall rating</p>
-                <div fxLayout="row">
+                <div fxLayout="row" style="margin: 8px;">
                     <img  src="../assets\star_outline.svg" alt="">
                     <img  src="../assets\star_outline.svg" alt="">
                     <img  src="../assets\star_outline.svg" alt="">
                     <img  src="../assets\star_outline.svg" alt="">
                     <img  src="../assets\star_outline.svg" alt="">
                 </div>
-                <textarea placeholder="write your review" class="searchinput" [ngStyle.lt-md]="{'width.VW': 80}"></textarea>
+                <textarea [(ngModel)]="review" placeholder="write your review" class="searchinput" [ngStyle.lt-md]="{'width.VW': 80}"></textarea>
                 <button class="reviewsubmit" mat-flat-button color="primary"><p class="submitbotton">Submit</p></button>
             </div>
         </div>

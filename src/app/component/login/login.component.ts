@@ -55,11 +55,11 @@ export class LoginComponent implements OnInit {
       else if (this.formdata.value.selectedvalue =="Admin"){
         this.adminuserservice.adminloginservice(payload).subscribe(
           (response: any) => {
-            console.log(response),
-              localStorage.setItem("token", response.result.accessToken),
+            console.log(response);
+              localStorage.setItem("token", response.result.accessToken);
               this.snackbar.open("Admin Registration successfull", "close", {
                 duration: 1500,
-              }),
+              });
               this.route.navigateByUrl("/home/admin/books");
           },
           (error) => {

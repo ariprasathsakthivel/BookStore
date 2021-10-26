@@ -1,10 +1,14 @@
 <div class="container" fxLayout="column" fxLayoutAlign="center center">
-    <div fxLayout="column" fxLayoutAlign="center start"> 
-        <div class="booksheading">
-            <h1 style="display: inline;">Books </h1>
-            <p style="display: inline; color: grey;">({{bookscount}} items)</p>
+    <div fxLayout="column" fxLayoutAlign="center start">
+        <div fxFill fxLayout="row">
+            <div class="booksheading">
+                <h1 style="display: inline;">Books </h1>
+                <p style="display: inline; color: grey;">({{bookscount}} items)</p>
+            </div>
+            <div fxFlex fxLayoutAlign="end start"  >
+                <button (click)="newbook()" class="buttons" mat-raised-button color="primary">Add new book</button>
+            </div>
         </div>
-
         <table class="table">
             <thead>
                 <th>Book Name</th>
@@ -15,7 +19,7 @@
                 <th>Net price</th>
                 <th>Quantity</th>
             </thead>
-            <tr *ngFor="let book of books">
+            <tr *ngFor="let book of books" (click)="openDialog(book)">
                 <td class="bookname">{{book.bookName}}</td>
                 <td class="author">{{book.author}}</td>
                 <td class="description">{{book.description}}</td>

@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BookserviceService } from 'src/app/services/BookService/bookservice.service';
-import { DatashareService } from 'src/app/services/Datashare/datashare.service';
 
 @Component({
   selector: 'app-displayselectedbook',
@@ -16,6 +15,7 @@ export class DisplayselectedbookComponent implements OnInit {
   ordercount=0;
   addtobaghide:boolean=true;
   counthide:boolean=false;
+  review:any;
 
   constructor(private bookservice:BookserviceService, private snackbar:MatSnackBar) { }
 
@@ -87,6 +87,8 @@ export class DisplayselectedbookComponent implements OnInit {
       
     )
   }
+
+
 
   
 }

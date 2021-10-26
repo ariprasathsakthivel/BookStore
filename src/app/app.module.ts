@@ -19,6 +19,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -35,6 +36,8 @@ import { DisplayselectedbookComponent } from './component/displayselectedbook/di
 import { MycartComponent } from './component/mycart/mycart.component';
 import { OrderplacedComponent } from './component/orderplaced/orderplaced.component';
 import { AdmindisplaybooksComponent } from './component/admindisplaybooks/admindisplaybooks.component';
+import { AdmintoolsComponent } from './component/admintools/admintools.component';
+import { AdminaddnewbookComponent } from './component/adminaddnewbook/adminaddnewbook.component';
 
 
 
@@ -51,7 +54,9 @@ import { AdmindisplaybooksComponent } from './component/admindisplaybooks/admind
     DisplayselectedbookComponent,
     MycartComponent,
     OrderplacedComponent,
-    AdmindisplaybooksComponent
+    AdmindisplaybooksComponent,
+    AdmintoolsComponent,
+    AdminaddnewbookComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +78,8 @@ import { AdmindisplaybooksComponent } from './component/admindisplaybooks/admind
     MatSelectModule,
     MatMenuModule,
     MatExpansionModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule
   ],
   
   providers: [],
