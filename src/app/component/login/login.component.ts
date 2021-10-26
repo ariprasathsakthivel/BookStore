@@ -57,10 +57,10 @@ export class LoginComponent implements OnInit {
           (response: any) => {
             console.log(response),
               localStorage.setItem("token", response.result.accessToken),
-              this.snackbar.open(response.message, "close", {
+              this.snackbar.open("Admin Registration successfull", "close", {
                 duration: 1500,
               }),
-              this.route.navigateByUrl("/home/books");
+              this.route.navigateByUrl("/home/admin/books");
           },
           (error) => {
             console.log(error)

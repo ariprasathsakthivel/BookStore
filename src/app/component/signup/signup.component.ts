@@ -59,7 +59,7 @@ export class SignupComponent implements OnInit {
         this.adminuserservice.adminregisterservice(payload).subscribe(
           (response:any) => {
             console.log(response),
-              this.snackbar.open(response.message, " ", {
+              this.snackbar.open("Admin Registration successfull", " ", {
                 duration: 1500,
               });
           },

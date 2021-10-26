@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardGuard } from './AuthGuard/auth-guard.guard';
+import { AdmindisplaybooksComponent } from './component/admindisplaybooks/admindisplaybooks.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { DisplaybookComponent } from './component/displaybook/displaybook.component';
 import { DisplayselectedbookComponent } from './component/displayselectedbook/displayselectedbook.component';
@@ -19,7 +20,8 @@ const routes: Routes = [
     { path:"wishlist",component:WishlistComponent },
     { path:"book",component:DisplayselectedbookComponent },
     { path:"mycart",component:MycartComponent },
-    { path:"orderplaced",component:OrderplacedComponent }
+    { path:"orderplaced",component:OrderplacedComponent },
+    { path:"admin/books",component:AdmindisplaybooksComponent }
   ]
   },
   { path: '', redirectTo: 'loginsignup', pathMatch: 'full' }
