@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BookserviceService } from 'src/app/services/BookService/bookservice.service';
-import { DatashareService } from 'src/app/services/Datashare/datashare.service';
 
 @Component({
   selector: 'app-displaybook',
@@ -40,9 +39,8 @@ export class DisplaybookComponent implements OnInit,OnDestroy {
                           this.books=response.result;
                           this.bookscount=response.result.length},
       (error) => console.log(error)
-
-
     )
+    
   }
 
   displayselected(book:any){

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BookserviceService } from 'src/app/services/BookService/bookservice.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,13 +10,23 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private routes:Router) { }
+  badgenum: any=0;
+
+  constructor(private routes:Router, private bookservice:BookserviceService) { }
 
   ngOnInit(): void { 
+    this.bookservice.getCartItems().subscribe(
+      (response: any) => { console.log(response.result);
+        this.badgenum = response.result.length;
+      console.log(this.badgenum);}
+    )
+    
+    
   }
 
   home(){
     this.routes.navigateByUrl("/home/books");
+    this.ngOnInit();
   }
 
   loginSignup(){
@@ -27,7 +38,8 @@ export class DashboardComponent implements OnInit {
   }
 
   mycart(){
-    this.routes.navigateByUrl("/home/mycart")
+    this.routes.navigateByUrl("/home/mycart");
+    this.ngOnInit();
   }
 
 

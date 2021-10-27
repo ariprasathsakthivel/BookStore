@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BookserviceService } from 'src/app/services/BookService/bookservice.service';
 
@@ -22,11 +23,17 @@ export class MycartComponent implements OnInit {
 
   orderlist:any=[];
 
+  formdata:any;
+
+  alladdress: any;
+  addressType:any;
+  selectedaddress: any;
+
   constructor( private bookservice:BookserviceService,private routes:Router) { }
 
   ngOnInit(): void {
     this.cartitemslist()
-    
+
   }
 
 
@@ -53,11 +60,59 @@ export class MycartComponent implements OnInit {
         this.fullname=this.cartitems[0].user_id.fullName;
         this.mobilenumber = this.cartitems[0].user_id.phone;
         this.address=this.cartitems[0].user_id.address;
+        this.addressdata();
       },
       (error) => console.log(error)
 
-
     )
+  }
+
+  
+
+
+  addressdata(){
+    let formgroupobj: any = [];
+
+    this.address.forEach((item:any) => {
+      formgroupobj.push(new FormGroup(
+        {
+          addressType: new FormControl(item.addressType),
+          address: new FormControl({ value: item.fullAddress, disabled: this.disabled }, [Validators.required]),
+          city: new FormControl({ value: item.city, disabled: this.disabled }, [Validators.required]),
+          state: new FormControl({ value: item.state, disabled: this.disabled }, [Validators.required])
+        }))
+    });
+
+    console.log(formgroupobj);
+    this.alladdress=new FormArray(formgroupobj);
+    console.log(this.alladdress);
+
+
+  }
+
+  updateadress(){
+    this.alladdress.controls.forEach((element:any) => {
+      console.log(this.addressType);
+      
+      if (element.value.addressType==this.addressType){
+        this.selectedaddress=element;
+      }
+    });
+    console.log(this.selectedaddress);
+    
+    let payload={
+      "addressType":this.selectedaddress.value.addressType ,
+      "fullAddress": this.selectedaddress.value.address,
+      "city": this.selectedaddress.value.city,
+      "state": this.selectedaddress.value.state
+    }
+    this.bookservice.updateaddress(payload).subscribe(
+      (response:any)=>{console.log(response);
+        this.cartitemslist();
+      },
+      (error)=>console.log(error)
+    )
+
   }
 
 
@@ -106,6 +161,7 @@ export class MycartComponent implements OnInit {
 
   enable(){
     this.disabled=false;
+    this.addressdata();
   }
 
 

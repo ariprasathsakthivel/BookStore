@@ -20,6 +20,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 
@@ -79,7 +80,8 @@ import { AdminaddnewbookComponent } from './component/adminaddnewbook/adminaddne
     MatMenuModule,
     MatExpansionModule,
     MatRadioModule,
-    MatDialogModule
+    MatDialogModule,
+    MatBadgeModule
   ],
   
   providers: [],

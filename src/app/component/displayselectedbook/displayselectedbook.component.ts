@@ -45,7 +45,7 @@ export class DisplayselectedbookComponent implements OnInit {
     this.addtobaghide=false;
     this.counthide=true;
     this.bookservice.addcartitem(this.data._id).subscribe(
-      (response)=>console.log(response),
+      (response)=>{console.log(response);},
       (error)=>console.log(error)
     )
     
@@ -70,7 +70,7 @@ export class DisplayselectedbookComponent implements OnInit {
       "quantityToBuy": this.ordercount
     }
     this.bookservice.updateitemcount(this.data._id,payload).subscribe(
-      (response)=>console.log(response),
+      (response) => { console.log(response)},
       (error)=>console.log(error)
       
       

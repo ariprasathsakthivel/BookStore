@@ -58,40 +58,41 @@
                         <input matInput required [value]="mobilenumber">
                     </mat-form-field>
                 </div>
-                <mat-radio-group aria-label="Select an option" *ngFor="let item of address">
-                    <mat-radio-button class="radiobutton" value="1">
+                <mat-radio-group aria-label="Select an option"  [(ngModel)]="addressType">
+                    <mat-radio-button class="radiobutton" [formGroup]="alladdress" *ngFor="let userFormGroup of alladdress.controls" [value]="userFormGroup.value.addressType">
 
-                        <div>
+                        <form [formGroup]="userFormGroup">
                             <div fxLayout="row" >
-                                <p class="addresstype">{{item.addressType}}</p>
+                                <p class="addresstype">{{userFormGroup.value.addressType}}</p>
                                 <button class="editbutton" mat-button *ngIf="disabled" (click)="enable()">Edit</button>
                             </div>
                             <mat-form-field appearance="outline" style="margin-top: 15px;">
                                 <mat-label>Address</mat-label>
                                 <mat-error>Enter Address</mat-error>
-                                <input  matInput required [value]="item.fullAddress" [disabled]="disabled">
+                                <input formControlName="address"  matInput required>
                             </mat-form-field>
                             <div fxLayout="row" fxLayoutGap="10px">
                                 <mat-form-field appearance="outline" style="margin-top: 15px;">
                                     <mat-label>city/town</mat-label>
                                     <mat-error>Enter a city/town</mat-error>
-                                    <input matInput required [value]="item.city" [disabled]="disabled">
+                                    <input formControlName="city" matInput required>
                                 </mat-form-field>
                                 
                                 <mat-form-field appearance="outline">
                                     <mat-label>State</mat-label>
                                     <mat-error>Enter a state</mat-error>
-                                    <input matInput required [value]="item.state" [disabled]="disabled">
+                                    <input formControlName="state" matInput required>
                                 </mat-form-field>
                             </div>
-                        </div>
+                        </form>
                     </mat-radio-button>
                 </mat-radio-group>
 
 
 
                 <div fxLayout="row" fxLayoutAlign="end end">
-                    <button mat-flat-button color="primary" class="placeorder" (click)="setStep(2)" *ngIf="step2button">Continue</button>
+                    <button mat-flat-button color="primary" class="placeorder" (click)="setStep(2)" *ngIf="step2button && disabled">Continue</button>
+                    <button mat-flat-button color="primary" class="placeorder" (click)="setStep(2);updateadress();" *ngIf="step2button && !disabled">Update address & Continue</button>
                 </div>
             </mat-expansion-panel>
 

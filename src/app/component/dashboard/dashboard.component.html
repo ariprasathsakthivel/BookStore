@@ -36,7 +36,7 @@
                 </div>
             </mat-menu>
             <button mat-icon-button fxLayout="column" style="padding-left: 15px;" (click)="mycart()">
-                <img src="..\assets/supermarket.svg">
+                <mat-icon [matBadge]="badgenum" color="primary" matBadgeSize="medium"><img  src="..\assets/supermarket.svg"></mat-icon>
                 <p class="profilename">Cart</p>
             </button>
         </div>

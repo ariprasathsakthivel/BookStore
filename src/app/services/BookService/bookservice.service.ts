@@ -131,6 +131,18 @@ export class BookserviceService {
     return this.http.deleteService(this.baseURL + "/bookstore_user/remove_wishlist_item/" + productID, null, true, header);
   }
 
+  updateaddress(payload: any) {
+    let header = {
+      headers: new HttpHeaders(
+        {
+          'x-access-token': this.token,
+          'Content-Type': 'application/json'
+        }
+      )
+    }
+    return this.http.putService(this.baseURL + "/bookstore_user/edit_user", payload, true, header);
+  }
+
 }
 
 

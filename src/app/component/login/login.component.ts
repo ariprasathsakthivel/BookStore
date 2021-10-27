@@ -37,11 +37,11 @@ export class LoginComponent implements OnInit {
       if (this.formdata.value.selectedvalue == "User") {
         this.userservice.loginservice(payload).subscribe(
           (response:any) => {
-            console.log(response),
-              localStorage.setItem("token", response.result.accessToken),
+            console.log(response);
               this.snackbar.open(response.message, "close", {
               duration: 1500,
-            }),
+            });
+            localStorage.setItem("token", response.result.accessToken);
             this.route.navigateByUrl("/home/books");
           },
           (error) => {
@@ -56,11 +56,11 @@ export class LoginComponent implements OnInit {
         this.adminuserservice.adminloginservice(payload).subscribe(
           (response: any) => {
             console.log(response);
-              localStorage.setItem("token", response.result.accessToken);
-              this.snackbar.open("Admin Registration successfull", "close", {
+              this.snackbar.open(response.message, "close", {
                 duration: 1500,
               });
-              this.route.navigateByUrl("/home/admin/books");
+            localStorage.setItem("token", response.result.accessToken);
+            this.route.navigateByUrl("/home/admin/books");
           },
           (error) => {
             console.log(error)
